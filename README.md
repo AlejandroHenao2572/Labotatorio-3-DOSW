@@ -81,5 +81,30 @@ En el centro del diagrama de contexto se puede observar el sistema Bankify, el c
     
 - **Otros Bancos**: Otrans instituciones financieras que interactuan o se relacionan con nuestro sistema.  
     -> Le avisan a Bankify si llego un nuevo deposito de uno de nuestros clientes.  
-    -> Bankify les pide procesar la transferencia.  
+    -> Bankify les pide procesar la transferencia. 
+
+### Historias de Usuario
+Teniendo en cuenta los diagramas de casos de uso del punto anterior, se relizaron las siguientes historias de usuario.
+
+- **Cliente**:  
+1) COMO cliente QUIERO crear una cuenta bancaria proporcionando un número de 10 dígitos PARA PODER empezar a usar los servicios financieros de Bankify.  
+2) COMO cliente QUIERO consultar el saldo actual de mi cuenta en cualquier momento PARA PODER conocer mi disponibilidad de fondos.  
+3)  COMO cliente QUIERO depositar dinero en mi cuenta PARA PODER incrementar mi saldo y poder realizar futuras transacciones.  
+4) COMO cliente QUIERO ser notificado si mi saldo se vuelve negativo PARA PODER tomar acciones correctivas y regularizar mi estado financiero.    
+
+- **Administrador**:  
+1) COMO administrador QUIERO registrar nuevos bancos en la lista de bancos autorizados y sus códigos PARA PODER ampliar nuestra oferta.  
+2) COMO administrador QUIERO consultar la lista de bancos autorizados y sus códigos PARA PODER asegurar que la validación de nuevas cuentas sea precisa y esté al día.
+3) COMO administrador QUIERO que el sistema rechace automáticamente cualquier intento de depósito a una cuenta que no exista o no sea válida PARA PODER mantener la integridad de los datos y prevenir fraudes.  
+
+- **Sistema**:  
+1) COMO sistema QUIERO validar que cada nuevo número de cuenta tenga exactamente 10 dígitos y solo contenga números PARA PODER cumplir con las reglas de negocio y mantener la consistencia de los datos.  
+2) COMO sistema QUIERO rechazar cualquier depósito que tenga un monto negativo PARA PODER garantizar la lógica y la validez de las transacciones financieras.  
+3) COMO sistema QUIERO impedir una transferencia si la cuenta de origen no tiene saldo suficiente PARA PODER prevenir sobregiros no autorizados y mantener la solvencia del sistema.  
+
+-**Equipo Técnico**:  
+1) COMO desarrollador QUIERO que el código sea analizado automáticamente por SonarQube tras cada cambio PARA PODER identificar y corregir vulnerabilidades y problemas de calidad de manera proactiva.  
+2) COMO desarrollador QUIERO generar un reporte de cobertura de código con JaCoCo después de ejecutar las pruebas PARA PODER asegurar que las funcionalidades críticas del sistema están adecuadamente cubiertas por pruebas automatizadas. 
+
+
 
