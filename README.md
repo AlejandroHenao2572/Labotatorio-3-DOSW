@@ -5,11 +5,9 @@
 - David Alejandro Patacon Henao
 - Laura Alejandra Venegas Piraban
 
----
-
 ## RETO #1: Identificando los Requerimientos
 
-## Actores Principales
+### Actores Principales
 
 A continuación se describen las entidades que interactúan con el sistema:
 
@@ -21,7 +19,7 @@ A continuación se describen las entidades que interactúan con el sistema:
 
 -   **Sistema Bancario:** Bankify, al ser un sistema financiero, debe interactuar con otros sistemas bancarios externos para procesar transacciones y validar información.
 
-## Precondiciones del Sistema
+### Precondiciones del Sistema
 
 Las siguientes condiciones deben cumplirse para que el sistema opere correctamente:
 
