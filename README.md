@@ -66,7 +66,7 @@ En el centro del diagrama de contexto se puede observar el sistema Bankify, el c
 - **Actores**
 **cliente/Usuario Final** : Este es al actor principal del sistema pues es la persona que usa el banco.
   
-    -> Le pide a Bankify Crear una cuenta, ver su saldo o hacer un depósito.
+    -> Le pide a Bankify Crear una cuenta, ver su saldo o hacer un depósito.  
     -> Bankify le responde con confirmaciones, mostrándole su saldo o avisándole, por ejemplo, si se quedó sin dinero.
   
 - **Administrador**: Es el jefe que supervisa todo.  
