@@ -58,22 +58,28 @@ Las siguientes condiciones deben cumplirse para que el sistema opere correctamen
 
 -   **Validación de Cuenta del Cliente:** Para que un cliente pueda consultar su saldo o realizar un depósito, primero debe existir una cuenta válida y activa a su nombre en el sistema.
 
--   ## RETO #2
+## RETO #2
 
-### Diagrama de Contexto
+### Diagrama de Contexto:  
 En el centro del diagrama de contexto se puede observar el sistema Bankify, el cual representa el software que estamos desarrollando, recibe órdenes y decide que hacer según las reglas de negocio.  
 
 - **Actores**
---**cliente/Usuario Final** : Este es al actor principal del sistema pues es la persona que usa el banco.  
-    -> Le pide a Bankify Crear una cuenta, ver su saldo o hacer un depósito.  
-    -> Bankify le responde con confirmaciones, mostrándole su saldo o avisándole, por ejemplo, si se quedó sin dinero.  
---**Administrador**: Es el jefe que supervisa todo.  
+**cliente/Usuario Final** : Este es al actor principal del sistema pues es la persona que usa el banco.
+  
+    -> Le pide a Bankify Crear una cuenta, ver su saldo o hacer un depósito.
+    -> Bankify le responde con confirmaciones, mostrándole su saldo o avisándole, por ejemplo, si se quedó sin dinero.
+  
+- **Administrador**: Es el jefe que supervisa todo.  
+
     -> Le dice a Bankify qué bancos existen (ej: "el código 01 es para BANCOLOMBIA") y cambia las reglas del juego.  
     -> Bankify le manda reportes y alertas para que sepa cómo está funcionando el sistema.  
---**Equipo Técnico**: Son los programadores que crean y arreglan el software.  
+    
+- **Equipo Técnico**: Son los programadores que crean y arreglan el software.  
+
     -> Le instalan cosas a Bankify como nuevas versiones del programa y hacen pruebas para asegurarse de que todo funcione bien.  
     -> Bankify les devuelve reportes técnicos que les dicen si el código es de buena calidad y si las pruebas son completas, para que ellos puedan mejorarlo.  
---**Otros Bancos**: Otrans instituciones financieras que interactuan o se relacionan con nuestro sistema.  
+    
+- **Otros Bancos**: Otrans instituciones financieras que interactuan o se relacionan con nuestro sistema.  
     -> Le avisan a Bankify si llego un nuevo deposito de uno de nuestros clientes.  
     -> Bankify les pide procesar la transferencia.  
 
