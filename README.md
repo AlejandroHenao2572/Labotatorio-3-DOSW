@@ -8,28 +8,29 @@
 ## RETO #1: Identificando los Requerimientos
 
 ### Reglas de negocio
--  **Las cuentas deben tener exactamente 10 dígitos. 
+-  Las cuentas deben tener exactamente 10 dígitos. 
 
--  **Para que una cuenta sea válida, los dos primeros dígitos 	corresponden a bancos registrados en el sistema. 
+-  Para que una cuenta sea válida, los dos primeros dígitos 	corresponden a bancos registrados en el sistema. 
 
--  **Las cuantas no permiten letras ni caracteres especiales, SOLO números. 
+-  Las cuantas no permiten letras ni caracteres especiales, SOLO números. 
 
--  **si el saldo es negativo notificar al cliente.
+-  si el saldo es negativo notificar al cliente.
 
 ### Funcionalidades principales:
  
--  **Crear una cuenta: validando número de cuenta(único), banco existente y formato. 
+-  Crear una cuenta: validando número de cuenta(único), banco existente y formato. 
 
--  **Validar una cuenta: Confirmar que el número de cuenta existe y cumple con las reglas. 
+-  Validar una cuenta: Confirmar que el número de cuenta existe y cumple con las reglas. 
 
--  **Consultar saldo: Mostrar el saldo actual de la cuenta. 
+-  Consultar saldo: Mostrar el saldo actual de la cuenta. 
 
--  **Depositar Dinero: Incrementar el saldo de la cuenta a la que se le hace el depósito con el monto dado. 
--  **Rechazar depósitos en cuentas no válidas. 
+-  Depositar Dinero: Incrementar el saldo de la cuenta a la que se le hace el depósito con el monto dado.
+  
+-  Rechazar depósitos en cuentas no válidas. 
 
--  **Rechazar depósitos con valores negativos y que no corresponden a cantidades numéricas. 
+-  Rechazar depósitos con valores negativos y que no corresponden a cantidades numéricas. 
 
--  **Rechazar depósitos de una cuenta a otra si la cuenta que lo envía no tiene el saldo suficiente. 
+-  Rechazar depósitos de una cuenta a otra si la cuenta que lo envía no tiene el saldo suficiente. 
 
 ### Actores Principales
 
