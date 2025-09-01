@@ -110,5 +110,12 @@ Teniendo en cuenta los diagramas de casos de uso del punto anterior, se relizaro
 1) COMO desarrollador QUIERO que el código sea analizado automáticamente por SonarQube tras cada cambio PARA PODER identificar y corregir vulnerabilidades y problemas de calidad de manera proactiva.  
 2) COMO desarrollador QUIERO generar un reporte de cobertura de código con JaCoCo después de ejecutar las pruebas PARA PODER asegurar que las funcionalidades críticas del sistema están adecuadamente cubiertas por pruebas automatizadas. 
 
+## Reto #3
+
+- **patron de diseño y Principios utilizados**:  
+    El patrón de diseño que se usó fue Strategy, donde se aplica en la interfaz VoteStrategy y sus implementaciones en FibonacciVoteStrategy. Se usa por la lógica del votación, secuencia de fibonacci en este caso. 
+     
+    En este diseño se aplican algunos de los principios SOLID: cada clse tiene una única responsabilidad, como Player para los jugadore, Story para las historias y PlanninPokerGame para la lógica central; el sistema está abiero para extensión pero cerrado para su modificación, ya que se pueden agregar nuevas formas de votación sin dañar el resto y se cumple con la sustitución de Liskov, pues cualquier estrategia que implemente VoteStrategy puede reemplazar a otra sin romper el programa.
+
 
 
