@@ -81,7 +81,11 @@ En el centro del diagrama de contexto se puede observar el sistema Bankify, el c
     
 - **Otros Bancos**: Otrans instituciones financieras que interactuan o se relacionan con nuestro sistema.  
     -> Le avisan a Bankify si llego un nuevo deposito de uno de nuestros clientes.  
-    -> Bankify les pide procesar la transferencia. 
+    -> Bankify les pide procesar la transferencia.
+
+### Casos de uso
+
+![alt text](image-1.png)
 
 ### Historias de Usuario
 Teniendo en cuenta los diagramas de casos de uso del punto anterior, se relizaron las siguientes historias de usuario.
@@ -102,7 +106,7 @@ Teniendo en cuenta los diagramas de casos de uso del punto anterior, se relizaro
 2) COMO sistema QUIERO rechazar cualquier depósito que tenga un monto negativo PARA PODER garantizar la lógica y la validez de las transacciones financieras.  
 3) COMO sistema QUIERO impedir una transferencia si la cuenta de origen no tiene saldo suficiente PARA PODER prevenir sobregiros no autorizados y mantener la solvencia del sistema.  
 
--**Equipo Técnico**:  
+- **Equipo Técnico**:  
 1) COMO desarrollador QUIERO que el código sea analizado automáticamente por SonarQube tras cada cambio PARA PODER identificar y corregir vulnerabilidades y problemas de calidad de manera proactiva.  
 2) COMO desarrollador QUIERO generar un reporte de cobertura de código con JaCoCo después de ejecutar las pruebas PARA PODER asegurar que las funcionalidades críticas del sistema están adecuadamente cubiertas por pruebas automatizadas. 
 
