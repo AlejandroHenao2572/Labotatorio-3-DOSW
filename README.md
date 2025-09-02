@@ -5,6 +5,8 @@
 - David Alejandro Patacon Henao
 - Laura Alejandra Venegas Piraban
 
+ >**Nota:** Segun lo acordado en la sesion de laborario nuestro grupo tiene plazo de entregar hasta el viernes 5 de septiembre.
+
 ## RETO #1: Identificando los Requerimientos
 
 ### Reglas de negocio
@@ -14,7 +16,7 @@
 
 -  Las cuantas no permiten letras ni caracteres especiales, SOLO números. 
 
--  si el saldo es negativo notificar al cliente.
+-  No es posible hacer depositos con valores negativos.
 
 ### Funcionalidades principales:
  
@@ -29,8 +31,6 @@
 -  Rechazar depósitos en cuentas no válidas. 
 
 -  Rechazar depósitos con valores negativos y que no corresponden a cantidades numéricas. 
-
--  Rechazar depósitos de una cuenta a otra si la cuenta que lo envía no tiene el saldo suficiente. 
 
 ### Actores Principales
 
@@ -78,10 +78,6 @@ En el centro del diagrama de contexto se puede observar el sistema Bankify, el c
 
     -> Le instalan cosas a Bankify como nuevas versiones del programa y hacen pruebas para asegurarse de que todo funcione bien.  
     -> Bankify les devuelve reportes técnicos que les dicen si el código es de buena calidad y si las pruebas son completas, para que ellos puedan mejorarlo.  
-    
-- **Otros Bancos**: Otrans instituciones financieras que interactuan o se relacionan con nuestro sistema.  
-    -> Le avisan a Bankify si llego un nuevo deposito de uno de nuestros clientes.  
-    -> Bankify les pide procesar la transferencia.
 
 ### Casos de uso
 
@@ -93,8 +89,7 @@ Teniendo en cuenta los diagramas de casos de uso del punto anterior, se relizaro
 - **Cliente**:  
 1) COMO cliente QUIERO crear una cuenta bancaria proporcionando un número de 10 dígitos PARA PODER empezar a usar los servicios financieros de Bankify.  
 2) COMO cliente QUIERO consultar el saldo actual de mi cuenta en cualquier momento PARA PODER conocer mi disponibilidad de fondos.  
-3)  COMO cliente QUIERO depositar dinero en mi cuenta PARA PODER incrementar mi saldo y poder realizar futuras transacciones.  
-4) COMO cliente QUIERO ser notificado si mi saldo se vuelve negativo PARA PODER tomar acciones correctivas y regularizar mi estado financiero.    
+3)  COMO cliente QUIERO depositar dinero en mi cuenta PARA PODER incrementar mi saldo y poder realizar futuras transacciones.      
 
 - **Administrador**:  
 1) COMO administrador QUIERO registrar nuevos bancos en la lista de bancos autorizados y sus códigos PARA PODER ampliar nuestra oferta.  
@@ -104,8 +99,7 @@ Teniendo en cuenta los diagramas de casos de uso del punto anterior, se relizaro
 - **Sistema**:  
 1) COMO sistema QUIERO validar que cada nuevo número de cuenta tenga exactamente 10 dígitos y solo contenga números PARA PODER cumplir con las reglas de negocio y mantener la consistencia de los datos.  
 2) COMO sistema QUIERO rechazar cualquier depósito que tenga un monto negativo PARA PODER garantizar la lógica y la validez de las transacciones financieras.  
-3) COMO sistema QUIERO impedir una transferencia si la cuenta de origen no tiene saldo suficiente PARA PODER prevenir sobregiros no autorizados y mantener la solvencia del sistema.  
-
+  
 - **Equipo Técnico**:  
 1) COMO desarrollador QUIERO que el código sea analizado automáticamente por SonarQube tras cada cambio PARA PODER identificar y corregir vulnerabilidades y problemas de calidad de manera proactiva.  
 2) COMO desarrollador QUIERO generar un reporte de cobertura de código con JaCoCo después de ejecutar las pruebas PARA PODER asegurar que las funcionalidades críticas del sistema están adecuadamente cubiertas por pruebas automatizadas. 
