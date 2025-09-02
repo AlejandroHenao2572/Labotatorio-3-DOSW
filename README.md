@@ -12,7 +12,7 @@
 ### Reglas de negocio
 -  Las cuentas deben tener exactamente 10 dígitos. 
 
--  Para que una cuenta sea válida, los dos primeros dígitos 	corresponden a bancos registrados en el sistema. 
+-  Para que una cuenta sea válida, los dos primeros dígitos corresponden a bancos registrados en el sistema. 
 
 -  Las cuantas no permiten letras ni caracteres especiales, SOLO números. 
 
