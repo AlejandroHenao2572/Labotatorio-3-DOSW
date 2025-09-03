@@ -1,4 +1,4 @@
-package planningpoker;
+package edu.dosw.lab.agilismo.planningpoker;
 
 /**
  * Representa una historia de usuario con su puntaje final.

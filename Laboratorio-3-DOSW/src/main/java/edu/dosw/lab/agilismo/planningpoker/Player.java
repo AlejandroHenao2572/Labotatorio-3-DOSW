@@ -1,6 +1,4 @@
-package planningpoker;
-
-
+package edu.dosw.lab.agilismo.planningpoker;
 
 /**
  * Representa un participante del juego (nombre y rol).

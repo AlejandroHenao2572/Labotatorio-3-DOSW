@@ -1,4 +1,4 @@
-package planningpoker;
+package edu.dosw.lab.agilismo.planningpoker;
 
 /**
  * Punto de entrada del programa.

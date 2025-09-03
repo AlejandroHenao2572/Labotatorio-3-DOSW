@@ -1,4 +1,4 @@
-package planningpoker;
+package edu.dosw.lab.agilismo.planningpoker;
 
 import java.util.Arrays;
 import java.util.List;

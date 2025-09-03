@@ -1,4 +1,4 @@
-package planningpoker;
+package edu.dosw.lab.agilismo.planningpoker;
 
 import java.util.*;
 
@@ -17,12 +17,12 @@ public class PlanningPokerGame {
 
     /** Registro de participantes */
     public void registerPlayers() {
-        System.out.println("=== Registro de participantes ===");
-        System.out.print("¿Cuántos jugadores participarán? ");
+        System.out.println("=== Registro de participantes ===\n");
+        System.out.print("¿Cuántos jugadores participarán?:");
         int num = Integer.parseInt(scanner.nextLine());
 
         for (int i = 0; i < num; i++) {
-            System.out.print("Nombre del jugador " + (i+1) + ": ");
+            System.out.print("\nNombre del jugador " + (i+1) + ": ");
             String name = scanner.nextLine();
             System.out.print("Rol del jugador " + (i+1) + ": ");
             String role = scanner.nextLine();
@@ -44,21 +44,19 @@ public class PlanningPokerGame {
     public void loadStories() {
         System.out.println("\n=== Historias de usuario de Bankify ===");
 
-        stories.add(new Story("COMO cliente QUIERO crear una cuenta bancaria proporcionando un número de 10 dígitos PARA PODER empezar a usar los servicios financieros de Bankify."));
-        stories.add(new Story("COMO cliente QUIERO consultar el saldo actual de mi cuenta en cualquier momento PARA PODER conocer mi disponibilidad de fondos."));
-        stories.add(new Story("COMO cliente QUIERO depositar dinero en mi cuenta PARA PODER incrementar mi saldo y poder realizar futuras transacciones."));
-        stories.add(new Story("COMO cliente QUIERO ser notificado si mi saldo se vuelve negativo PARA PODER tomar acciones correctivas y regularizar mi estado financiero."));
+        stories.add(new Story("\nCOMO cliente \nQUIERO crear una cuenta bancaria proporcionando un número de 10 dígitos \nPARA PODER empezar a usar los servicios financieros de Bankify.\n"));
+        stories.add(new Story("\nCOMO cliente \nQUIERO consultar el saldo actual de mi cuenta en cualquier momento \nPARA PODER conocer mi disponibilidad de fondos.\n"));
+        stories.add(new Story("\nCOMO cliente \nQUIERO depositar dinero en mi cuenta \nPARA PODER incrementar mi saldo y poder realizar futuras transacciones.\n"));
+        
+        stories.add(new Story("\nCOMO administrador \nQUIERO registrar nuevos bancos en la lista de bancos autorizados y sus códigos \nPARA PODER ampliar nuestra oferta.\n"));
+        stories.add(new Story("\nCOMO administrador \nQUIERO consultar la lista de bancos autorizados y sus códigos \nPARA PODER asegurar que la validación de nuevas cuentas sea precisa y esté al día.\n"));
+        stories.add(new Story("\nCOMO administrador \nQUIERO que el sistema rechace automáticamente cualquier intento de depósito a una cuenta que no exista o no sea válida \nPARA PODER mantener la integridad de los datos y prevenir fraudes.\n"));
 
-        stories.add(new Story("COMO administrador QUIERO registrar nuevos bancos en la lista de bancos autorizados y sus códigos PARA PODER ampliar nuestra oferta."));
-        stories.add(new Story("COMO administrador QUIERO consultar la lista de bancos autorizados y sus códigos PARA PODER asegurar que la validación de nuevas cuentas sea precisa y esté al día."));
-        stories.add(new Story("COMO administrador QUIERO que el sistema rechace automáticamente cualquier intento de depósito a una cuenta que no exista o no sea válida PARA PODER mantener la integridad de los datos y prevenir fraudes."));
-
-        stories.add(new Story("COMO sistema QUIERO validar que cada nuevo número de cuenta tenga exactamente 10 dígitos y solo contenga números PARA PODER cumplir con las reglas de negocio y mantener la consistencia de los datos."));
-        stories.add(new Story("COMO sistema QUIERO rechazar cualquier depósito que tenga un monto negativo PARA PODER garantizar la lógica y la validez de las transacciones financieras."));
-        stories.add(new Story("COMO sistema QUIERO impedir una transferencia si la cuenta de origen no tiene saldo suficiente PARA PODER prevenir sobregiros no autorizados y mantener la solvencia del sistema."));
-
-        stories.add(new Story("COMO desarrollador QUIERO que el código sea analizado automáticamente por SonarQube tras cada cambio PARA PODER identificar y corregir vulnerabilidades y problemas de calidad de manera proactiva."));
-        stories.add(new Story("COMO desarrollador QUIERO generar un reporte de cobertura de código con JaCoCo después de ejecutar las pruebas PARA PODER asegurar que las funcionalidades críticas del sistema están adecuadamente cubiertas por pruebas automatizadas."));
+        stories.add(new Story("\nCOMO sistema \nQUIERO validar que cada nuevo número de cuenta tenga exactamente 10 dígitos y solo contenga números \nPARA PODER cumplir con las reglas de negocio y mantener la consistencia de los datos.\n"));
+        stories.add(new Story("\nCOMO sistema \nQUIERO rechazar cualquier depósito que tenga un monto negativo \nPARA PODER garantizar la lógica y la validez de las transacciones financieras.\n"));
+        
+        stories.add(new Story("\nCOMO desarrollador \nQUIERO que el código sea analizado automáticamente por SonarQube tras cada cambio \nPARA PODER identificar y corregir vulnerabilidades y problemas de calidad de manera proactiva.\n"));
+        stories.add(new Story("\nCOMO desarrollador \nQUIERO generar un reporte de cobertura de código con JaCoCo después de ejecutar las pruebas \nPARA PODER asegurar que las funcionalidades críticas del sistema están adecuadamente cubiertas por pruebas automatizadas.\n"));
     }
 
     /** Inicia el flujo del juego */
@@ -72,7 +70,7 @@ public class PlanningPokerGame {
 
     /** Votación de una historia */
     private void playStory(Story story) {
-        System.out.println("\nVotando: " + story.getTitle());
+        System.out.println("\nVotando: \n" + story.getTitle());
 
         while (story.getPoints() == -1) {
             Map<Player, Integer> votes = new HashMap<>();
@@ -84,9 +82,9 @@ public class PlanningPokerGame {
             Set<Integer> uniqueVotes = new HashSet<>(votes.values());
             if (uniqueVotes.size() == 1) {
                 story.setPoints(uniqueVotes.iterator().next());
-                System.out.println("✅ Consenso alcanzado! Puntaje asignado: " + story.getPoints());
+                System.out.println("Consenso alcanzado! Puntaje asignado: " + story.getPoints());
             } else {
-                System.out.println("⚠ Votos divergentes – Discutan y vuelvan a votar.");
+                System.out.println("Votos divergentes. Discutan y vuelvan a votar.");
                 votes.forEach((p, v) -> System.out.println(p.getName() + " votó: " + v));
             }
         }
@@ -101,9 +99,9 @@ public class PlanningPokerGame {
             try {
                 vote = Integer.parseInt(scanner.nextLine());
                 if (voteStrategy.isValidVote(vote)) break;
-                else System.out.println("❌ Voto inválido, intente de nuevo.");
+                else System.out.println("Voto inválido, intente de nuevo.");
             } catch (Exception e) {
-                System.out.println("❌ Entrada inválida, intente de nuevo.");
+                System.out.println("Entrada inválida, intente de nuevo.");
             }
         }
         return vote;
