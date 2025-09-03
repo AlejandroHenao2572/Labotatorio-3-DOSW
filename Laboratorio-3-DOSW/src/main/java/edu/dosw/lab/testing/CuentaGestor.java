@@ -9,6 +9,10 @@ import java.util.UUID;
 
 /**
  * Clase responsable de gestionar las operaciones con cuentas bancarias.
+ * Maneja la creacion, consulta de saldo y depositos en cuentas.
+ * 
+ * @author David Patacon - Laurea Venegas
+ * @version 1.0
  */
 public class CuentaGestor {
     
@@ -18,28 +22,51 @@ public class CuentaGestor {
     
     /**
      * Constructor que inicializa el gestor con los servicios necesarios.
+     * 
+     * @param cuentas Lista de cuentas bancarias (no null)
+     * @param validator Validador de cuentas (no null)
+     * @param bancoService Servicio de bancos (no null)
+     * @throws IllegalArgumentException si algun parametro es null
      */
     public CuentaGestor(List<CuentaBancaria> cuentas, CuentaValidator validator, BancoService bancoService) {
+        if (cuentas == null) {
+            throw new IllegalArgumentException("La lista de cuentas no puede ser null");
+        }
+        if (validator == null) {
+            throw new IllegalArgumentException("El validator no puede ser null");
+        }
+        if (bancoService == null) {
+            throw new IllegalArgumentException("El bancoService no puede ser null");
+        }
+        
         this.cuentas = cuentas;
         this.validator = validator;
         this.bancoService = bancoService;
     }
     
     /**
-     * Crea una nueva cuenta bancaria si el numero de cuenta es valido.
+     * Crea una nueva cuenta bancaria con saldo inicial cero.
+     * Valida el formato y unicidad del numero de cuenta.
      * 
-     * @param numeroCuenta Numero de la cuenta a crear
-     * @param usuario Usuario propietario de la cuenta
-     * @return La cuenta creada o null si el numero de cuenta es invalido
+     * @param numeroCuenta Numero de la cuenta a crear (no null)
+     * @param usuario Usuario propietario de la cuenta (no null)
+     * @return La cuenta creada
+     * @throws IllegalArgumentException si los parametros son invalidos, el numero es invalido o ya existe
      */
     public CuentaBancaria crearCuenta(String numeroCuenta, Usuario usuario) {
-        if (!validator.validarNumeroCuenta(numeroCuenta)) {
-            return null;
+        if (numeroCuenta == null) {
+            throw new IllegalArgumentException("El numero de cuenta no puede ser null");
+        }
+        if (usuario == null) {
+            throw new IllegalArgumentException("El usuario no puede ser null");
         }
         
-        // Verificar que la cuenta no existe ya
+        if (!validator.validarNumeroCuenta(numeroCuenta)) {
+            throw new IllegalArgumentException("El numero de cuenta tiene formato invalido: " + numeroCuenta);
+        }
+
         if (cuentas.stream().anyMatch(c -> c.getNumeroCuenta().equals(numeroCuenta))) {
-            return null;
+            throw new IllegalArgumentException("Ya existe una cuenta con el numero: " + numeroCuenta);
         }
         
         // Crear nueva cuenta con saldo inicial cero
@@ -63,33 +90,46 @@ public class CuentaGestor {
     }
     
     /**
-     * Consulta el saldo de una cuenta bancaria.
+     * Consulta el saldo actual de una cuenta bancaria.
      * 
-     * @param numeroCuenta El numero de cuenta a consultar
-     * @return El saldo de la cuenta o null si la cuenta no existe
+     * @param numeroCuenta El numero de cuenta a consultar (no null)
+     * @return El saldo de la cuenta
+     * @throws IllegalArgumentException si el numero de cuenta es null o la cuenta no existe
      */
     public BigDecimal consultarSaldo(String numeroCuenta) {
+        if (numeroCuenta == null) {
+            throw new IllegalArgumentException("El numero de cuenta no puede ser null");
+        }
+        
         return buscarCuenta(numeroCuenta)
                 .map(CuentaBancaria::getSaldo)
-                .orElse(null);
+                .orElseThrow(() -> new IllegalArgumentException("No existe una cuenta con el numero: " + numeroCuenta));
     }
     
     /**
      * Realiza un deposito en una cuenta bancaria.
+     * Actualiza el saldo y registra la transaccion en el historial.
      * 
-     * @param numeroCuenta El numero de cuenta destino
-     * @param monto El monto a depositar
-     * @return true si el deposito se realizo correctamente, false en caso contrario
+     * @param numeroCuenta El numero de cuenta destino (no null)
+     * @param monto El monto a depositar (positivo)
+     * @return true si el deposito se realizo correctamente
+     * @throws IllegalArgumentException si los parametros son invalidos o la cuenta no existe
      */
     public boolean realizarDeposito(String numeroCuenta, BigDecimal monto) {
+        if (numeroCuenta == null) {
+            throw new IllegalArgumentException("El numero de cuenta no puede ser null");
+        }
+        if (monto == null) {
+            throw new IllegalArgumentException("El monto no puede ser null");
+        }
         if (monto.compareTo(BigDecimal.ZERO) <= 0) {
-            return false;
+            throw new IllegalArgumentException("El monto debe ser positivo");
         }
         
         Optional<CuentaBancaria> cuentaOpt = buscarCuenta(numeroCuenta);
         
         if (cuentaOpt.isEmpty()) {
-            return false;
+            throw new IllegalArgumentException("No existe una cuenta con el numero: " + numeroCuenta);
         }
         
         CuentaBancaria cuenta = cuentaOpt.get();
@@ -116,7 +156,10 @@ public class CuentaGestor {
     }
     
     /**
-     * Busca una cuenta por su numero
+     * Busca una cuenta por su numero en la lista de cuentas.
+     * 
+     * @param numeroCuenta Numero de cuenta a buscar
+     * @return Optional con la cuenta encontrada o vacio si no existe
      */
     private Optional<CuentaBancaria> buscarCuenta(String numeroCuenta) {
         return cuentas.stream()
