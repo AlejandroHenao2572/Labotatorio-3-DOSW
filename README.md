@@ -111,5 +111,23 @@ Teniendo en cuenta los diagramas de casos de uso del punto anterior, se relizaro
      
     En este diseño se aplican algunos de los principios SOLID: cada clse tiene una única responsabilidad, como Player para los jugadore, Story para las historias y PlanninPokerGame para la lógica central; el sistema está abiero para extensión pero cerrado para su modificación, ya que se pueden agregar nuevas formas de votación sin dañar el resto y se cumple con la sustitución de Liskov, pues cualquier estrategia que implemente VoteStrategy puede reemplazar a otra sin romper el programa.
 
+## Reto #4
+
+Principios SOLID aplicados:    
+
+Principio de Responsabilidad Única (S):  
+
+- **CuentaValidator:** Responsable solo de validar cuentas
+- **CuentaGestor:** Responsable de gestionar operaciones de cuentas
+- **BancoService:** Responsable de gestionar operaciones de bancos
+
+Principio Abierto/Cerrado (O):  
+
+La validación de cuentas está diseñada para ser extensible sin modificar el código existente
 
 
+Patrones de Diseño Utilizados:  
+
+- **Patrón Fachada:** Bankify actúa como una fachada que proporciona una interfaz simplificada para los clientes.
+- **Patrón Servicio:** Se utilizan clases de servicio especializadas (BancoService, CuentaGestor) para encapsular la lógica de negocio.
+- **Patrón Validator:** CuentaValidator encapsula y centraliza la lógica de validación.
