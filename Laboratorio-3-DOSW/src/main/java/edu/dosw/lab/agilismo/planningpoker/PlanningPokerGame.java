@@ -3,7 +3,9 @@ package edu.dosw.lab.agilismo.planningpoker;
 import java.util.*;
 
 /**
- * Lógica central del juego de Planning Poker.
+ * Clase que maneja la lógica del juego Planning Poker.
+ * @author Laura Alejandra Venegas Piraban y David Alejandro Patacon Henao
+ * @version 1.0 
  */
 public class PlanningPokerGame {
     private final List<Player> players = new ArrayList<>();
@@ -11,11 +13,18 @@ public class PlanningPokerGame {
     private final VoteStrategy voteStrategy;
     private final Scanner scanner = new Scanner(System.in);
 
+    /**
+     * Constructor de la clase PlanningPokerGame.
+     * @param voteStrategy Estrategia de votación a utilizar en el juego.
+     */
     public PlanningPokerGame(VoteStrategy voteStrategy) {
         this.voteStrategy = voteStrategy;
     }
 
-    /** Registro de participantes */
+    /**
+     * Registra los participantes del juego solicitando su nombre y rol.
+     * Si el usuario no confirma el inicio, el juego se cancela.
+     */
     public void registerPlayers() {
         System.out.println("=== Registro de participantes ===\n");
         System.out.print("¿Cuántos jugadores participarán?:");
@@ -40,7 +49,9 @@ public class PlanningPokerGame {
         }
     }
 
-    /** Carga las historias de usuario de Bankify */
+    /**
+     * Carga las historias de usuario de Bankify en la lista de historias del juego.
+     */
     public void loadStories() {
         System.out.println("\n=== Historias de usuario de Bankify ===");
 
@@ -59,7 +70,10 @@ public class PlanningPokerGame {
         stories.add(new Story("\nCOMO desarrollador \nQUIERO generar un reporte de cobertura de código con JaCoCo después de ejecutar las pruebas \nPARA PODER asegurar que las funcionalidades críticas del sistema están adecuadamente cubiertas por pruebas automatizadas.\n"));
     }
 
-    /** Inicia el flujo del juego */
+    /**
+     * Inicia el flujo principal del juego, recorriendo las historias y gestionando la votación.
+     * Al finalizar, muestra el resumen de resultados.
+     */
     public void start() {
         System.out.println("\n=== Iniciando Planning Poker ===");
         for (Story story : stories) {
@@ -68,7 +82,12 @@ public class PlanningPokerGame {
         showSummary();
     }
 
-    /** Votación de una historia */
+    /**
+     * Gestiona la votación de una historia específica.
+     * Solicita votos a cada jugador y verifica si hay consenso.
+     * Si no hay consenso, se repite la votación tras discusión.
+     * @param story Historia de usuario a votar.
+     */
     private void playStory(Story story) {
         System.out.println("\nVotando: \n" + story.getTitle());
 
@@ -90,7 +109,12 @@ public class PlanningPokerGame {
         }
     }
 
-    /** Pide un voto válido a un jugador */
+    /**
+     * Solicita a un jugador que ingrese un voto válido según la estrategia de votación.
+     * Si el voto es inválido, lo solicita nuevamente.
+     * @param player Jugador que debe votar.
+     * @return Voto válido ingresado por el jugador.
+     */
     private int askVote(Player player) {
         int vote = -1;
         while (true) {
@@ -107,7 +131,9 @@ public class PlanningPokerGame {
         return vote;
     }
 
-    /** Muestra el resumen final */
+    /**
+     * Muestra el resumen final del juego, listando cada historia y el puntaje asignado.
+     */
     private void showSummary() {
         System.out.println("\n=== Resumen Final ===");
         stories.forEach(s -> 
