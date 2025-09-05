@@ -162,7 +162,6 @@ public class Bankify {
         }
         
         this.bancosRegistrados = bancosRegistrados;
-        // Actualizar el validator cuando se cambia la lista de bancos
         this.cuentaValidator = new CuentaValidator(bancosRegistrados);
         this.bancoService = new BancoService(bancosRegistrados);
     }
@@ -170,7 +169,7 @@ public class Bankify {
     /**
      * Obtiene la lista de cuentas bancarias.
      * 
-     * @return Lista de cuentas bancarias (nunca null)
+     * @return Lista de cuentas bancarias 
      */
     public List<CuentaBancaria> getCuentas() {
         return cuentas;
@@ -179,7 +178,7 @@ public class Bankify {
     /**
      * Establece la lista de cuentas bancarias.
      * 
-     * @param cuentas Nueva lista de cuentas (no null)
+     * @param cuentas Nueva lista de cuentas 
      * @throws IllegalArgumentException si la lista es null
      */
     public void setCuentas(List<CuentaBancaria> cuentas) {

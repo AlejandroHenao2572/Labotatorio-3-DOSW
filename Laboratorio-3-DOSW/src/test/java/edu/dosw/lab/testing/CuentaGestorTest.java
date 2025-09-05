@@ -17,7 +17,7 @@ import static org.mockito.Mockito.when;
 
 /**
  * Clase de prueba para CuentaGestor que verifica la funcionalidad
- * de gestión de cuentas bancarias: creacion, consulta de saldo y depositos.
+ * de gestion de cuentas bancarias: creacion, consulta de saldo y depositos.
  * 
  * @author David Patacon - Laura Venegas
  * @version 1.0
@@ -56,7 +56,13 @@ public class CuentaGestorTest {
         cuentaGestor = new CuentaGestor(cuentas, validator, bancoService);
     }
     
- 
+     /**
+     * Conjunto de pruebas relacionadas con la creacion de cuentas.
+     */
+    @Nested
+    @DisplayName("Pruebas de creacion de cuentas")
+    class CreacionCuentaTests {
+
         /**
          * Verifica la creacion exitosa de una cuenta con parametros validos.
          */
@@ -112,23 +118,19 @@ public class CuentaGestorTest {
         @Test
         @DisplayName("Debe lanzar excepcion con parametros nulos")
         public void debeLanzarExcepcionConParametrosNulos() {
-            // Act & Assert - Número null
             Exception exception1 = assertThrows(IllegalArgumentException.class, () -> {
                 cuentaGestor.crearCuenta(null, usuario);
             });
             
-            assertTrue(exception1.getMessage().contains("numero de cuenta no puede ser null"), 
-                    "Debe validar que el número no sea null");
+            assertTrue(exception1.getMessage().contains("numero de cuenta no puede ser null"));
             
-            // Act & Assert - Usuario null
             Exception exception2 = assertThrows(IllegalArgumentException.class, () -> {
                 cuentaGestor.crearCuenta("0112345678", null);
             });
             
-            assertTrue(exception2.getMessage().contains("usuario no puede ser null"), 
-                    "Debe validar que el usuario no sea null");
+            assertTrue(exception2.getMessage().contains("usuario no puede ser null"));
         }
-
+    }
     
     /**
      * Conjunto de pruebas relacionadas con la consulta de saldos.
@@ -153,55 +155,49 @@ public class CuentaGestorTest {
         @Test
         @DisplayName("Debe retornar saldo correcto para cuenta existente")
         public void debeRetornarSaldoCorrecto() {
-            // Act
             BigDecimal saldo = cuentaGestor.consultarSaldo("0112345678");
-            
-            // Assert
             assertEquals(new BigDecimal("1000.00"), saldo, "El saldo consultado debe coincidir");
         }
         
         /**
-         * Verifica que se lance una excepción al consultar saldo de una cuenta inexistente.
+         * Verifica que se lance una excepcion al consultar saldo de una cuenta inexistente.
          */
         @Test
-        @DisplayName("Debe lanzar excepción al consultar cuenta inexistente")
+        @DisplayName("Debe lanzar excepcion al consultar cuenta inexistente")
         public void debeLanzarExcepcionConsultarCuentaInexistente() {
-            // Act & Assert
             Exception exception = assertThrows(IllegalArgumentException.class, () -> {
                 cuentaGestor.consultarSaldo("9999999999");
             });
             
-            assertTrue(exception.getMessage().contains("No existe una cuenta"), 
-                    "El mensaje de error debe indicar que la cuenta no existe");
+            assertTrue(exception.getMessage().contains("No existe una cuenta"));
         }
         
         /**
-         * Verifica que se lance una excepción al consultar saldo con número de cuenta null.
+         * Verifica que se lance una excepcion al consultar saldo con numero de cuenta null.
          */
         @Test
-        @DisplayName("Debe lanzar excepción al consultar con número null")
+        @DisplayName("Debe lanzar excepcion al consultar con numero null")
         public void debeLanzarExcepcionConsultaConNumeroNull() {
             // Act & Assert
             Exception exception = assertThrows(IllegalArgumentException.class, () -> {
                 cuentaGestor.consultarSaldo(null);
             });
             
-            assertTrue(exception.getMessage().contains("numero de cuenta no puede ser null"), 
-                    "Debe validar que el número no sea null");
+            assertTrue(exception.getMessage().contains("numero de cuenta no puede ser null"));
         }
     }
     
     /**
-     * Conjunto de pruebas relacionadas con la realización de depósitos.
+     * Conjunto de pruebas relacionadas con la realizacion de depositos.
      */
     @Nested
-    @DisplayName("Pruebas de realización de depósitos")
+    @DisplayName("Pruebas de realizacion de depositos")
     class RealizarDepositoTests {
         
         private CuentaBancaria cuentaPrueba;
         
         /**
-         * Configura cuenta de prueba para los tests de depósito.
+         * Configura cuenta de prueba para los tests de deposito.
          */
         @BeforeEach
         public void setUpCuenta() {
@@ -212,75 +208,64 @@ public class CuentaGestorTest {
         }
         
         /**
-         * Verifica la realización exitosa de un depósito.
+         * Verifica la realizacion exitosa de un deposito.
          */
         @Test
-        @DisplayName("Debe realizar depósito exitosamente")
+        @DisplayName("Debe realizar deposito exitosamente")
         public void debeRealizarDepositoExitoso() {
-            // Arrange
             BigDecimal montoDeposito = new BigDecimal("200.50");
             BigDecimal saldoEsperado = new BigDecimal("700.50");
             
-            // Act
             boolean resultado = cuentaGestor.realizarDeposito("0112345678", montoDeposito);
             
-            // Assert
-            assertTrue(resultado, "El depósito debe ser exitoso");
+            assertTrue(resultado, "El deposito debe ser exitoso");
             assertEquals(saldoEsperado, cuentaPrueba.getSaldo(), "El saldo debe incrementarse correctamente");
-            assertEquals(1, cuentaPrueba.getHistorialDepositos().size(), "Debe registrarse el depósito en el historial");
+            assertEquals(1, cuentaPrueba.getHistorialDepositos().size(), "Debe registrarse el deposito en el historial");
             assertEquals(montoDeposito, cuentaPrueba.getHistorialDepositos().get(0).getMonto(), 
-                    "El monto del depósito en el historial debe ser correcto");
+                    "El monto del deposito en el historial debe ser correcto");
         }
         
         /**
-         * Verifica que se lance una excepción al intentar realizar un depósito con monto negativo.
+         * Verifica que se lance una excepcion al intentar realizar un deposito con monto negativo.
          */
         @Test
-        @DisplayName("Debe lanzar excepción con monto negativo")
+        @DisplayName("Debe lanzar excepcion con monto negativo")
         public void debeLanzarExcepcionMontoNegativo() {
-            // Arrange
             BigDecimal montoNegativo = new BigDecimal("-100");
             
-            // Act & Assert
             Exception exception = assertThrows(IllegalArgumentException.class, () -> {
                 cuentaGestor.realizarDeposito("0112345678", montoNegativo);
             });
             
-            assertTrue(exception.getMessage().contains("monto debe ser positivo"), 
-                    "Debe validar que el monto sea positivo");
-            // Verificar que el saldo no cambió
+            assertTrue(exception.getMessage().contains("monto debe ser positivo"));
             assertEquals(new BigDecimal("500.00"), cuentaPrueba.getSaldo(), "El saldo no debe cambiar");
         }
         
         /**
-         * Verifica que se lance una excepción al intentar realizar un depósito en una cuenta inexistente.
+         * Verifica que se lance una excepcion al intentar realizar un deposito en una cuenta inexistente.
          */
         @Test
-        @DisplayName("Debe lanzar excepción al depositar en cuenta inexistente")
+        @DisplayName("Debe lanzar excepcion al depositar en cuenta inexistente")
         public void debeLanzarExcepcionCuentaInexistente() {
-            // Act & Assert
             Exception exception = assertThrows(IllegalArgumentException.class, () -> {
                 cuentaGestor.realizarDeposito("9999999999", new BigDecimal("100"));
             });
             
-            assertTrue(exception.getMessage().contains("No existe una cuenta"), 
-                    "Debe indicar que la cuenta no existe");
+            assertTrue(exception.getMessage().contains("No existe una cuenta"));
         }
         
         /**
-         * Verifica que se lance una excepción al realizar un depósito con parámetros nulos.
+         * Verifica que se lance una excepcion al realizar un deposito con parametros nulos.
          */
         @Test
-        @DisplayName("Debe lanzar excepción con parámetros nulos")
+        @DisplayName("Debe lanzar excepcion con parametros nulos")
         public void debeLanzarExcepcionParametrosNulos() {
-            // Act & Assert - Número null
             Exception exception1 = assertThrows(IllegalArgumentException.class, () -> {
                 cuentaGestor.realizarDeposito(null, new BigDecimal("100"));
             });
-            
+
             assertTrue(exception1.getMessage().contains("numero de cuenta no puede ser null"));
-            
-            // Act & Assert - Monto null
+
             Exception exception2 = assertThrows(IllegalArgumentException.class, () -> {
                 cuentaGestor.realizarDeposito("0112345678", null);
             });
@@ -289,20 +274,17 @@ public class CuentaGestorTest {
         }
         
         /**
-         * Verifica la creación correcta del historial de depósitos para una cuenta sin historial.
+         * Verifica la creacion correcta del historial de depositos para una cuenta sin historial.
          */
         @Test
-        @DisplayName("Debe crear historial si no existe al realizar depósito")
+        @DisplayName("Debe crear historial si no existe al realizar deposito")
         public void debeCrearHistorialSiNoExiste() {
-            // Arrange - Cuenta sin historial
             cuentaPrueba.setHistorialDepositos(null);
             
-            // Act
             cuentaGestor.realizarDeposito("0112345678", new BigDecimal("100"));
-            
-            // Assert
-            assertNotNull(cuentaPrueba.getHistorialDepositos(), "Debe crear el historial de depósitos");
-            assertEquals(1, cuentaPrueba.getHistorialDepositos().size(), "Debe tener un depósito en el historial");
+
+            assertNotNull(cuentaPrueba.getHistorialDepositos());
+            assertEquals(1, cuentaPrueba.getHistorialDepositos().size());
         }
     }
 }

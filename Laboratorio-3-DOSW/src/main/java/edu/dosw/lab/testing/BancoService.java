@@ -99,11 +99,7 @@ public class BancoService {
      * @return El banco encontrado
      * @throws IllegalArgumentException si el codigo es null o el banco no existe
      */
-    public Banco obtenerBancoPorCodigo(String codigo) {
-        if (codigo == null) {
-            throw new IllegalArgumentException("El codigo del banco no puede ser null");
-        }
-        
+    public Banco obtenerBancoPorCodigo(String codigo) {        
         return bancosRegistrados.stream()
                 .filter(b -> b.getCodigo().equals(codigo))
                 .findFirst()
