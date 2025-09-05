@@ -131,3 +131,19 @@ Patrones de Diseño Utilizados:
 - **Patrón Fachada:** Bankify actúa como una fachada que proporciona una interfaz simplificada para los clientes.
 - **Patrón Servicio:** Se utilizan clases de servicio especializadas (BancoService, CuentaGestor) para encapsular la lógica de negocio.
 - **Patrón Validator:** CuentaValidator encapsula y centraliza la lógica de validación.
+
+## Reto #5  
+
+### Cobertura inicial:  
+<img width="1101" height="187" alt="image" src="https://github.com/user-attachments/assets/33d443ba-3ecd-4305-b7c0-a00965240f88" />  
+<img width="413" height="552" alt="image" src="https://github.com/user-attachments/assets/2889555e-c589-4105-9eb9-560bba09f116" />  
+
+**¿Cuál es el porcentaje de cobertura de instrucciones y de ramas?**  
+El porcentaje de cobertura inicial fue del 56% y el de ramas 72%.  
+
+**¿Hay alguna línea o condición que las pruebas no cubrieron?**    
+En la funcionalidad del planing poker no cubrimos las clases Main y PlanningPokerGame, ya que estas clases requieren la entrada de datos de los usuarios para hacer la actividad y para esto no se pueden realizar pruebas unitarias.
+
+
+
+
