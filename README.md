@@ -149,9 +149,15 @@ En la funcionalidad del planing poker no cubrimos las clases Main y PlanningPoke
 Tuvimos que agregar mas casos de prueba, para las clases Banco, Deposito y Usuario, principalmente para los metodos set y get de estas clases.  
 Esta metrica es importante para probar que todo el codigo funcione correctamente. 
 
+## Reto #6
 
+### Reporte de Analsis estatico con SonarQube:
+<img width="1863" height="851" alt="image" src="https://github.com/user-attachments/assets/f33c377c-6172-4b0e-b777-db2f3647c151" />
 
+##Reflexion: David Patacon
 
+¿Por qué considera que es importante realizar pruebas a un software diseñado?   
+Considero que las pruebas son una herramienta que permite evitar problemas costosos, garantiza calidad y permite evolucionar el software.  
 
 
 
