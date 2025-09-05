@@ -79,6 +79,9 @@ En el centro del diagrama de contexto se puede observar el sistema Bankify, el c
     -> Le instalan cosas a Bankify como nuevas versiones del programa y hacen pruebas para asegurarse de que todo funcione bien.  
     -> Bankify les devuelve reportes técnicos que les dicen si el código es de buena calidad y si las pruebas son completas, para que ellos puedan mejorarlo.  
 
+### Diagrama Casos de Uso:  
+<img width="571" height="874" alt="image" src="https://github.com/user-attachments/assets/7877a732-6ac5-4a01-b290-a5c341a9da53" />
+
 ### Historias de Usuario
 Teniendo en cuenta los diagramas de casos de uso del punto anterior, se relizaron las siguientes historias de usuario.
 
