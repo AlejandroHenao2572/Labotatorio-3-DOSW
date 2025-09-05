@@ -81,7 +81,8 @@ En el centro del diagrama de contexto se puede observar el sistema Bankify, el c
 
 ### Casos de uso
 
-![alt text](image-1.png)
+<img width="571" height="874" alt="image" src="https://github.com/user-attachments/assets/e1eb325f-9aa4-43f7-a4a4-8ed42b1451ac" />
+
 
 ### Historias de Usuario
 Teniendo en cuenta los diagramas de casos de uso del punto anterior, se relizaron las siguientes historias de usuario.
@@ -154,7 +155,7 @@ Esta metrica es importante para probar que todo el codigo funcione correctamente
 ### Reporte de Analsis estatico con SonarQube:
 <img width="1863" height="851" alt="image" src="https://github.com/user-attachments/assets/f33c377c-6172-4b0e-b777-db2f3647c151" />
 
-##Reflexion: David Patacon
+## Reflexion: David Patacon
 
 ¿Por qué considera que es importante realizar pruebas a un software diseñado?   
 Considero que las pruebas son una herramienta que permite evitar problemas costosos, garantiza calidad y permite evolucionar el software.  
