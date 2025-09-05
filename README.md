@@ -142,7 +142,17 @@ Patrones de Diseño Utilizados:
 El porcentaje de cobertura inicial fue del 56% y el de ramas 72%.  
 
 **¿Hay alguna línea o condición que las pruebas no cubrieron?**    
-En la funcionalidad del planing poker no cubrimos las clases Main y PlanningPokerGame, ya que estas clases requieren la entrada de datos de los usuarios para hacer la actividad y para esto no se pueden realizar pruebas unitarias.
+En la funcionalidad del planing poker no cubrimos las clases Main y PlanningPokerGame, ya que estas clases requieren la entrada de datos de los usuarios para hacer la actividad y para esto no se pueden realizar pruebas unitarias.  
+
+### Cobertura final:
+<img width="1087" height="183" alt="image" src="https://github.com/user-attachments/assets/c53b0797-238e-4be8-9c4a-ba743ff7455b" />
+Tuvimos que agregar mas casos de prueba, para las clases Banco, Deposito y Usuario, principalmente para los metodos set y get de estas clases.  
+Esta metrica es importante para probar que todo el codigo funcione correctamente. 
+
+
+
+
+
 
 
 
