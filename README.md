@@ -158,6 +158,11 @@ Esta metrica es importante para probar que todo el codigo funcione correctamente
 ¿Por qué considera que es importante realizar pruebas a un software diseñado?   
 Considero que las pruebas son una herramienta que permite evitar problemas costosos, garantiza calidad y permite evolucionar el software.  
 
+## Reflexión: Laura Venegas
+
+¿Por qué considera que es importante realizar pruebas a un software diseñado? 
+Es importante realizar pruebas a un software porque permiten verificar que cumple con los requerimientos definidos, ayudan a detectar y corregir errores en la lógica y el funcionamiento, y aseguran que el sistema sea confiable, seguro y de calidad.
+
 
 
 
